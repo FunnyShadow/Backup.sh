@@ -1,0 +1,13 @@
+#### AutoBackup 备份列表文件
+#### Made By BlueFunny_
+
+### 版本号 ###
+# 不懂勿动!
+backupListVersion="1.6"
+
+### 备份文件列表 ###
+# 此处填写你要备份的文件/文件夹
+# 一行一个, 无需区分绝对/相对
+backupFiles=(
+	# Example: /path/to/backup/
+)
