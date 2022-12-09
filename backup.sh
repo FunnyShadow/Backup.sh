@@ -10,7 +10,7 @@
 
 ### 脚本使用变量 ###
 timestamp=$(date +%s)
-version="1.6"
+version="1.6.1"
 
 ### 工具 ###
 ## 错误处理
@@ -129,7 +129,7 @@ Verify() {
         LEcho "[!] 检测到已存在上一次运行所留下的残留文件,正在清理中" "[!] Detected residual files left over from the last run, cleaning up"
         Cleaner "full"
     else
-        LEcho "[D] 未检测到工作文件夹,跳过清理" "[D] Work folder not detected, skipping cleanup"
+        Debug "[D] 未检测到工作文件夹,跳过清理" "[D] Work folder not detected, skipping cleanup"
     fi
     LEcho "[-] 创建新的工作文件夹中....."
     mkdir -p "${workDir}" && Debug "[D] 已创建工作文件夹" "[D] Work folder created"
