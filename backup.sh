@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #### Auto Backup Script
-#### Version 1.6
+#### Version 1.6.1
 #### Made By BlueFunny_
 
 ### ShellCheck ###
@@ -129,7 +129,7 @@ Verify() {
         LEcho "[!] 检测到已存在上一次运行所留下的残留文件,正在清理中" "[!] Detected residual files left over from the last run, cleaning up"
         Cleaner "full"
     else
-        Debug "[D] 未检测到工作文件夹,跳过清理" "[D] Work folder not detected, skipping cleanup"
+        LEcho "[D] 未检测到工作文件夹,跳过清理" "[D] Work folder not detected, skipping cleanup"
     fi
     LEcho "[-] 创建新的工作文件夹中....."
     mkdir -p "${workDir}" && Debug "[D] 已创建工作文件夹" "[D] Work folder created"
@@ -206,13 +206,13 @@ Backup() {
 
 ## 打包
 Packer() {
-    if [ "${genDigest:=false}" == "true" ]; then
-        LEcho "[-] 生成文件摘要中..." "[-] Generating file digest..."
-        if ! sha256sum -b "${backupFiles[@]:?}" >"${workDir}/all.sha256"; then
-            Error "[x] 生成文件摘要失败,请检查权限" "[x] Failed to generate file digest, please check the permission"
-        fi
-        LEcho "[√] 文件摘要生成成功" "[√] File digest generated successfully"
-    fi
+    #if [ "${genDigest:=false}" == "true" ]; then
+    #    LEcho "[-] 生成文件摘要中..." "[-] Generating file digest..."
+    #    if ! sha256sum "${backupFiles[*]:?}/*" >"${workDir}/all.sha256"; then
+    #        Error "[x] 生成文件摘要失败,请检查权限" "[x] Failed to generate file digest, please check the permission"
+    #    fi
+    #    LEcho "[√] 文件摘要生成成功" "[√] File digest generated successfully"
+    #fi
     cd ${backupDir} || Error "[x] 错误, 无法进入工作文件夹, 请检查权限" "[x] Error, unable to enter the work folder, please check the permission"
     Debug "[D] 当前位置: $(pwd)" "[D] Current location: $(pwd)"
     if [ -d "$(pwd)/${fileName}" ]; then
